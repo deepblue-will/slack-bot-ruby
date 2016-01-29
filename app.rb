@@ -2,10 +2,10 @@ require 'sinatra'
 require 'json'
 
 post '/gateway' do
-  puts params
-  puts ENV["TOKEN"]
-  puts ENV["REPLY_WORDS"]
-  puts ENV["CHANNELS"]
+  logger.info params
+  logger.info ENV["TOKEN"]
+  logger.info ENV["REPLY_WORDS"]
+  logger.info ENV["CHANNELS"]
 end
 
 def respond_message message
