@@ -3,10 +3,10 @@ require 'json'
 
 post '/gateway' do
   return if params[:token] != ENV["TOKEN"]
-  ENV["CHANNELS"].split(",").include?(params[:channel_name])
+  return if !ENV["CHANNELS"].nil? && !ENV["CHANNELS"].split(",").include?(params[:channel_name])
   
   reply_words = ENV["REPLY_WORDS"].split(",")
-  respond_message(reply_words[rand(reply_words.size - 1)])
+  respond_message(reply_words[rand(reply_words.size)])
 end
 
 def respond_message(message)
